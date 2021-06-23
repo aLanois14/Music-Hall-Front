@@ -1,6 +1,3 @@
-import { Event } from "./event.model"
-import { Job } from "./job.model"
-
 export class User {
     public id: number
     public firstName: string
@@ -8,14 +5,7 @@ export class User {
     public picture: string
     public email: string
     public password: string
-    public role: string
     public jwt: Jwt
-    public events: Array<Event>
-    public jobs: Array<Job>
-    public participate: boolean
-    public onLine: boolean
-    public firstConnexion: boolean
-    public connectedCalendar: boolean
 
 	constructor(user?: User) {
         this.id = user ? user.id : null
@@ -24,14 +14,7 @@ export class User {
         this.picture = user ? user.picture : ""
         this.email = user ? user.email : ""
 		this.password = user ? user.password : ""
-        this.role = user ? user.role : ""
         this.jwt = (user && user.jwt) ? new Jwt(user.jwt) : null
-        this.events = user ? user.events : new Array<Event>()
-        this.jobs = user ? user.jobs : new Array<Job>()
-        this.participate = user ? user.participate : null
-        this.onLine = user ? user.onLine : false
-        this.firstConnexion = user ? user.firstConnexion : false
-        this.connectedCalendar = user ? user.connectedCalendar : false
 	}
 }
 

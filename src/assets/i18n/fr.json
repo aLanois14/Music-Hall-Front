@@ -1,0 +1,47 @@
+{
+  "msg" : {
+
+    "button" : {
+      "new": "Créer un nouveau..."
+    },
+
+    "dashboard" : {
+      "tab" : {
+        "my-day" : "Ma journée",
+        "team-day" : "Ma journée d'équipe",
+        "my-team" : "Mon équipe"
+      },
+      "well-being" : "Comment vous sentez vous aujourd'hui ? ",
+      "notes" : "Notes quotidiennes ",
+      "personal-notes" : "Vos notes personnelles ici...",
+      "recent" : "Récents",
+      "no-content" : "Aucun élément",
+      "invite-team" : "Invitez votre équipe",
+      "share-link" : "Partagez ce lien avec votre équipe afin qu'elle puisse rejoindre votre espace de travail. Tous les membres de l'équipe ont accès à toutes les contributions et événements non définis comme privés.",
+      "by-email" : "Par email",
+      "placeholder-email" : "exemple@mail.com",
+      "send-invitation" : "Envoyer",
+      "copy-link" : "Copier le lien",
+      "all-members" : "Tous les membres",
+      "no-member" : "Aucun membre",
+      "inline" : "En ligne",
+      "offline" : "Absent",
+      "team-mood" : "L'humeur de mon équipe "
+    },
+    "contribution" : {
+      "tab" : {
+
+      }
+    },
+    "event" : {
+      "tab" : {
+
+      }
+    },
+    "task" : {
+      "tab" : {
+
+      }
+    }
+  }
+}

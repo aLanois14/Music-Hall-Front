@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -36,6 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }), 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
