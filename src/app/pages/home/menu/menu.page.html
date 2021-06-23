@@ -1,0 +1,54 @@
+<ion-content
+	class = "menu">
+	<div class="menu-container">
+		<div class="user-infos">
+			<ion-avatar slot="start" class="user-img">
+				<img *ngIf="user.picture" [src]="user.picture" alt="" />
+
+				<span *ngIf="!user.picture">
+					<ng-container *ngIf="user.firstName">
+						{{ user.firstName[0].toUpperCase() }}
+					</ng-container>
+				</span>
+			</ion-avatar>
+
+			<ion-label class="user-details">
+				<div>{{ user.firstName }} {{ user.lastName }}</div>
+			</ion-label>
+		</div>
+
+		<ion-icon name="notifications-outline"></ion-icon>
+		<ion-icon name="mail-outline"></ion-icon>
+
+		<!-- Menu Items -->
+		<div class="menu-items">
+			<ion-item 
+				lines = "none" 
+				[ngClass] = "{'active': activeRoute == 'dashboard'}" 
+				(click) = "NavTo('dashboard')">
+				Dashboard
+			</ion-item>
+
+			<ion-item 
+				lines = "none" 
+				[ngClass] = "{'active': activeRoute == 'contributions'}" 
+				(click) = "NavTo('contributions')">
+				Contributions
+			</ion-item>
+
+			<ion-item 
+				lines = "none" 
+				[ngClass] = "{'active': activeRoute == 'events'}" 
+				(click) = "NavTo('events')">
+				Événements
+			</ion-item>
+
+			<ion-item 
+				lines = "none" 
+				[ngClass] = "{'active': activeRoute == 'tasks'}" 
+				(click) = "NavTo('tasks')">
+				Tâches
+			</ion-item>
+		</div>
+	</div>
+</ion-content>

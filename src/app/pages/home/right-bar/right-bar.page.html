@@ -1,0 +1,42 @@
+<ion-content
+	class = "menu">
+	<div class="menu-container">
+		<!-- SearchBar -->
+		<ion-item
+			lines = "none">
+			<div class="ng-autocomplete">
+				<ng-autocomplete 
+					#userSelector
+					[data]="userOptions"
+					[searchKeyword]="keyword"
+					(selected)='SelectUser($event)'
+					(inputChanged)='SearchUser($event)'
+					[itemTemplate]="itemTemplate"
+					[notFoundTemplate]="notFoundTemplate"
+					debounceTime="300"
+					(keyup)="InviteByMail($event)"
+					placeholder = "Ajoutez une personne"
+				>                                 
+				</ng-autocomplete>
+
+				<ng-template #itemTemplate let-item>
+					<div class="member-infos">
+						<ion-avatar slot="start" class="member-img">
+							<img *ngIf="item.picture" src="{{item.picture}}" alt="" />
+
+							<span *ngIf="!item.picture">
+								<ng-container *ngIf="item.firstName">
+									{{ item.firstName[0].toUpperCase() }}
+								</ng-container>
+							</span>
+						</ion-avatar>
+						<ion-label class="member-details">
+							<a [innerHTML]="item.name"></a>
+						</ion-label>
+					</div>
+				</ng-template>
+			</div>
+		</ion-item>
+	</div>
+</ion-content>
+
