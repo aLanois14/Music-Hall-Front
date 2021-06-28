@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago'
+import { NewPublicationModule } from './components/new-publication/new-publication.module';
+import { RegisterModule } from './components/register/register.module';
 
 export function tokenGetter() {
   return localStorage.getItem("auth_token");
@@ -46,6 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
           tokenGetter: tokenGetter
         }
     }),
+    NewPublicationModule,
+    RegisterModule
   ],
   providers: [
     { 

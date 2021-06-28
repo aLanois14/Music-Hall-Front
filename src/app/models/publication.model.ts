@@ -17,9 +17,9 @@ export class Publication {
 
 export class PublicationPhoto {
 	public guid: string
-	public photo: string
+	public fileString: string
 	constructor(p?: PublicationPhoto) {
-		this.photo = p ? p.photo : null
+		this.fileString = p ? p.fileString : null
 		this.guid = p ? p.guid : ""
 	}
 }

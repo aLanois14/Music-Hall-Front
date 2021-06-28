@@ -1,54 +1,109 @@
-<ion-content
-	class = "menu">
-	<div class="menu-container">
-		<div class="user-infos">
-			<ion-avatar slot="start" class="user-img">
-				<img *ngIf="user.picture" [src]="user.picture" alt="" />
+<ion-content class="menu">
+    <div class="menu-container">
+        <div class="user-infos" *ngIf="currentUser">
+            <ion-avatar slot="start" class="user-img">
+                <img
+                    *ngIf="currentUser.picture"
+                    [src]="currentUser.picture"
+                    alt=""
+                />
 
-				<span *ngIf="!user.picture">
-					<ng-container *ngIf="user.firstName">
-						{{ user.firstName[0].toUpperCase() }}
-					</ng-container>
-				</span>
-			</ion-avatar>
+                <span *ngIf="!currentUser.picture">
+                    <ng-container *ngIf="currentUser.firstName">
+                        {{ currentUser.firstName[0].toUpperCase() }}
+                    </ng-container>
+                </span>
+            </ion-avatar>
 
-			<ion-label class="user-details">
-				<div>{{ user.firstName }} {{ user.lastName }}</div>
-			</ion-label>
-		</div>
+            <ion-label class="user-details">
+                <div>
+                    {{ currentUser.firstName }} {{ currentUser.lastName }}
+                </div>
+            </ion-label>
+        </div>
 
-		<ion-icon name="notifications-outline"></ion-icon>
-		<ion-icon name="mail-outline"></ion-icon>
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-icon name="mail-outline"></ion-icon>
 
-		<!-- Menu Items -->
-		<div class="menu-items">
-			<ion-item 
-				lines = "none" 
-				[ngClass] = "{'active': activeRoute == 'dashboard'}" 
-				(click) = "NavTo('dashboard')">
-				Dashboard
-			</ion-item>
+        <div class="loggin" *ngIf="!currentUser">
+            <form [formGroup]="form" (ngSubmit)="Login()" novalidate>
+                <div class="signin-container">
+                    <div class="sc-left">
+                        <div>
+                            <div class="form-group">
+                                <ion-label position="floating"
+                                    >Email address</ion-label
+                                >
+                                <ion-input
+                                    formControlName="email"
+                                    type="email"
+                                    required
+                                ></ion-input>
+                                <div
+                                    style="color: red"
+                                    *ngIf="form.hasError('email', 'email') && isSubmitted == true"
+                                >
+                                    Veuillez saisir un format d'adresse mail
+                                    correct
+                                </div>
+                                <div
+                                    style="color: red"
+                                    *ngIf="form.hasError('required', 'email') && isSubmitted == true"
+                                >
+                                    Veuillez saisir une adresse mail
+                                </div>
+                            </div>
 
-			<ion-item 
-				lines = "none" 
-				[ngClass] = "{'active': activeRoute == 'contributions'}" 
-				(click) = "NavTo('contributions')">
-				Contributions
-			</ion-item>
+                            <div class="form-group">
+                                <ion-label position="floating"
+                                    >Password
+                                    <ion-icon
+                                        name="help-circle-outline"
+                                    ></ion-icon
+                                ></ion-label>
+                                <ion-input
+                                    formControlName="password"
+                                    type="password"
+                                    required
+                                ></ion-input>
+                                <div
+                                    style="color: red"
+                                    *ngIf="form.hasError('required', 'password') && isSubmitted == true"
+                                >
+                                    Veuillez saisir un mot de passe
+                                </div>
+                            </div>
 
-			<ion-item 
-				lines = "none" 
-				[ngClass] = "{'active': activeRoute == 'events'}" 
-				(click) = "NavTo('events')">
-				Événements
-			</ion-item>
+                            <div class="form-group">
+                                <ion-button
+                                    type="submit"
+                                    color="primary"
+                                    expand="block"
+                                    >Connexion</ion-button
+                                >
+                            </div>
 
-			<ion-item 
-				lines = "none" 
-				[ngClass] = "{'active': activeRoute == 'tasks'}" 
-				(click) = "NavTo('tasks')">
-				Tâches
-			</ion-item>
-		</div>
-	</div>
+							<div class="form-group">
+                                <ion-button
+                                    color="primary"
+                                    expand="block"
+									(click)="OpenRegister()"
+                                    >Register</ion-button
+                                >
+                            </div>
+
+                            <!--<div class="form-group already-account">
+						<p>
+						  Already have an account? <span>Sign in to your Fairwai workspace!</span>
+						</p>
+						<a>
+						  <ion-icon name="arrow-forward-outline"></ion-icon>
+						</a>
+					  </div>-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </ion-content>

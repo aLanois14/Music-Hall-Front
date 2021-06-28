@@ -1,0 +1,49 @@
+@import "~/src/global.scss";
+
+.menu {	
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 270px;
+	/*--padding-top: 20px;
+	--padding-bottom: 20px;
+	--padding-start: 30px;
+	--padding-end: 30px;*/
+
+	.menu-container {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: var(--color-grey4);
+		border-right: 1px solid var(--color-grey3);
+		transition: all .5s ease-out;
+		padding: 20px 30px;
+
+		ion-item {
+			cursor: pointer;
+			--background: none;
+			--background-activated: none;
+			--background-focused: none;
+			--background-hover: none;
+			--ripple-color: transparent;
+			--padding-start: 0;
+	
+			
+			&.active {
+				color: var(--color-purple);
+			}
+		}
+	
+		.menu-items {
+			ion-item {
+				--min-height: initial;
+				font-size: var(--font-size2);
+				font-weight: 600;
+				margin: 0 0 20px 0;
+			}
+		}
+	}
+}
+

@@ -36,6 +36,9 @@ export class AuthenticateService {
         return new Promise<boolean>((resolve, reject) => {
             this._http.PostFormData('register', register).subscribe(
                 (res) => {
+                    var currentUser = new User(res);
+                    localStorage.setItem('auth_token', currentUser.jwt.auth_token);
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
                     resolve(true);
                 },
                 (Error) => {
@@ -71,15 +74,15 @@ export class AuthenticateService {
      * Params:
      * login: Login
      */
-    Login(login: Login): Promise<boolean> {
-        return new Promise<boolean>((resolve, reject) => {
+    Login(login: Login): Promise<User> {
+        return new Promise<User>((resolve, reject) => {
             this._http.Post('login', login).subscribe(
                 (res) => {
                     var currentUser = new User(res);
                     localStorage.setItem('auth_token', currentUser.jwt.auth_token);
                     localStorage.setItem('refresh_token', currentUser.jwt.refresh_token)
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                    resolve(true);
+                    resolve(currentUser);
                 },
                 (Error) => {
                     console.log(Error);

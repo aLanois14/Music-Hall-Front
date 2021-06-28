@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ThreadPageRoutingModule } from './thread-routing.module';
 
 import { ThreadPage } from './thread.page';
-import { NewPublicationComponent } from '@app/components/new-publication/new-publication.component';
 
 @NgModule({
 	imports: [
@@ -17,8 +16,7 @@ import { NewPublicationComponent } from '@app/components/new-publication/new-pub
 		ThreadPageRoutingModule
 	],
 	declarations: [
-		ThreadPage,
-		NewPublicationComponent
+		ThreadPage
 	]
 })
 export class ThreadPageModule {}
