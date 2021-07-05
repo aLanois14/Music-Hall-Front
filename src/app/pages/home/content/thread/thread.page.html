@@ -7,3 +7,22 @@
 <ion-content>
 	<ion-button (click)="NewPublication()">Create</ion-button>
 </ion-content>
+
+<ion-content>
+  <ion-card *ngFor="let publication of publications">
+    <ion-label>{{publication.title}}</ion-label>
+    <ion-label>{{publication.description}}</ion-label>
+    <div *ngIf="publication.publicationFiles.length > 0">
+      <div *ngFor="let publicationFile of publication.publicationFiles">
+        <img *ngIf="publicationFile.type == 'image'" [src]="publicationFile.fileString" alt="" />
+        <audio
+              *ngIf="publicationFile.type == 'audio'"
+              controls
+              [src]="publicationFile.fileSrc">
+                  Your browser does not support the
+                  <code>audio</code> element.
+        </audio>
+      </div>
+    </div>
+  </ion-card>
+</ion-content>

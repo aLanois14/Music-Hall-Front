@@ -66,7 +66,6 @@ export class RegisterComponent implements OnInit {
                         this.currentUser[key] = this.form.get(key).value
                     }
                 )
-				console.log("yop")
             this._auth.CheckEmailAvailability(this.currentUser.email)
                 .then(
                     data => {

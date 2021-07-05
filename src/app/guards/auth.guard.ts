@@ -55,34 +55,4 @@ export class AuthGuard implements CanActivate {
                 }
             )     
     }
-
-    private async tryRefreshingTokens(token: string): Promise<boolean> {
-        // Try refreshing tokens using refresh token
-        const refreshToken: string = localStorage.getItem("refresh_token")
-        console.log(token)
-        console.log(refreshToken)
-        if (!token || !refreshToken) {  
-            console.log("pas de refresh") 
-            return false;
-        }
-    
-        let jwt = new Jwt()
-        jwt.auth_token = token
-        jwt.refresh_token = refreshToken
-
-        this._http.Post("refresh-token", jwt)
-            .subscribe(
-                res => {
-                    console.log("refresh yes")
-                    let jwt = new Jwt(res)
-                    localStorage.setItem("auth_token", jwt.auth_token)
-                    localStorage.setItem("refreshToken", jwt.refresh_token)
-                    return true
-                },
-                Error => {
-                    console.log("refresh no")
-                    return false
-                }
-            )        
-      }
 }

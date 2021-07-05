@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUpload } from '@app/models/file-upload.model';
 import { Publication } from '@app/models/publication.model';
 import { PublicationService } from '@app/services/publication.service';
+import { UtilitiesService } from '@app/services/utilities.service';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -17,14 +18,14 @@ export class NewPublicationComponent implements OnInit {
 
     constructor(
         private _publication: PublicationService,
-        private _modal: ModalController
+        private _modal: ModalController,
+        private _utilities: UtilitiesService
     ) {}
 
     ngOnInit() {}
 
 	public fileChangeEvent(event){
 		if (event.target.files && event.target.files[0]) {
-            console.log(event.target.files)
             for(let i = 0; i < event.target.files.length; i++){
                 let reader = new FileReader();
                 let file = new FileUpload()
@@ -59,6 +60,11 @@ export class NewPublicationComponent implements OnInit {
 
         formData.append("Description", this.publication.description)
 
-        this._publication.NewPublication(formData).then(data => console.log(data))
+        this._publication
+            .NewPublication(formData)
+            .then(data => {
+                this._utilities.Toast("success", "Publication envoyée")
+                this._modal.dismiss()
+            })
     }
 }

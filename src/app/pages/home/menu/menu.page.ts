@@ -46,6 +46,8 @@ export class MenuPage implements OnInit {
             ],
             password: ['', Validators.required],
         })
+
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     public NavTo(target: string): void {
