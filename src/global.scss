@@ -621,9 +621,12 @@ ion-content.main-content {
 // -- Suggestions container
 .autocomplete-container {
 	position: relative;
-	left: -10px;
 	border: 1px solid transparent;
 	border-radius: 4px;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
 
 	.input-container {
 		padding: 0 10px;
@@ -717,6 +720,19 @@ ion-content.main-content {
 	&:hover {
 		border: 1px solid var(--color-green);
 		box-shadow: 0 0 2px 2px var(--color-green-light) !important;
+	}
+}
+
+.post-container {
+	margin: auto;
+	width: 75%;
+
+	.title {
+		font-size: 20px;
+	}
+
+	.description {
+		font-size: 15px;
 	}
 }
 
