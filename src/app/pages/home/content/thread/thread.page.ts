@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewPublicationComponent } from '@app/components/new-publication/new-publication.component';
-import { Publication } from '@app/models/publication.model';
+import { Publication, PublicationFile } from '@app/models/publication.model';
 import { PublicationService } from '@app/services/publication.service';
 import { ModalController } from '@ionic/angular';
 
@@ -53,5 +53,15 @@ export class ThreadPage implements OnInit {
             cssClass: 'create-new-modal',
         });
         return await pop.present();
+    }
+
+    public filterImg(files: Array<PublicationFile>): Array<PublicationFile>{
+        let result = files.filter(x => x.type == 'image')
+        return result
+    }
+
+    public filterAudio(files: Array<PublicationFile>): Array<PublicationFile>{
+        let result = files.filter(x => x.type == 'audio')
+        return result
     }
 }

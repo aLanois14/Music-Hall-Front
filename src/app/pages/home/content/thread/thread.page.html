@@ -12,8 +12,16 @@
     <ion-label class="title">{{publication.title}}</ion-label>
     <ion-label class="description">{{publication.description}}</ion-label>
     <div *ngIf="publication.publicationFiles.length > 0">
-      <div *ngFor="let publicationFile of publication.publicationFiles">
-        <img *ngIf="publicationFile.type == 'image'" [src]="publicationFile.fileString" alt="" />
+      <carousel 
+        *ngIf="filterImg(publication.publicationFiles).length > 0"
+        [cellWidth]="400"
+        [height]="250">
+        <div class="carousel-cell" *ngFor="let publicationFile of filterImg(publication.publicationFiles)">
+          <img *ngIf="publicationFile.type == 'image'" [src]="publicationFile.fileString" alt="" />
+        </div>
+      </carousel>
+      
+      <div *ngFor="let publicationFile of filterAudio(publication.publicationFiles)">
         <audio
               *ngIf="publicationFile.type == 'audio'"
               controls
