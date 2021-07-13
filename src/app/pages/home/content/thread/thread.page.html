@@ -1,4 +1,5 @@
 <div class="main-header">
+  <h1>Music-Hall</h1>
   <ion-button
       slot = "end"
       color="primary"
@@ -7,7 +8,7 @@
   </ion-button>
 </div>
 
-<ion-content>
+<ion-content class="main-content">
   <ion-card class="post-container" *ngFor="let publication of publications">
     <ion-label class="title">{{publication.title}}</ion-label>
     <ion-label class="description">{{publication.description}}</ion-label>

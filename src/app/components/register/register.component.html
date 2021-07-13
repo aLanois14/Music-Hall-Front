@@ -1,97 +1,95 @@
 <form [formGroup]="form" (ngSubmit)="Register()" novalidate>
     <div class="signin-container">
-        <div class="sc-left">
-            <div>
-                <div class="d-flex">
-                    <div class="df-left">
-                        <div class="form-group fg-input">
-                            <ion-input
-                                type="file"
-                                required
-                                (change)="fileChangeEvent($event)"
-                            ></ion-input>
-                        </div>
-
-                        <div *ngIf="picture" class="form-group fg-img">
-                            <ion-thumbnail slot="start">
-                                <ion-img [src]="picture"></ion-img>
-                            </ion-thumbnail>
-                        </div>
-                    </div>
-
-                    <div class="df-right">
-						<div class="form-group">
-							<ion-label position="floating">Email</ion-label>
-							<ion-input
-								formControlName="email"
-								type="email"
-								required
-							></ion-input>
-						
-							<span class="error ion-padding" style="color: red;" *ngIf="isSubmitted && !emailAvailable">
-								Email déjà utilisé
-							</span>
-							<span class="error ion-padding" style="color: red;" *ngIf="form.hasError('required', 'email') && isSubmitted == true">
-								Veuillez saisir un email
-							</span>
-							<span style="color: red;" *ngIf="form.hasError('email', 'email') && isSubmitted == true">
-								Veuillez saisir un format d'adresse mail correct</span>
-						</div>
-						<div class="form-group">
-							<ion-label position="floating">Password</ion-label>
-							<ion-input
-								formControlName="password"
-								type="password"
-								required
-							></ion-input>
-							<span class="error ion-padding" style="color: red;" *ngIf="form.hasError('required', 'password') && isSubmitted == true">
-								Veuillez saisir un mot de passe
-							</span>
-						</div>
-
-                        <div class="form-group">
-                            <ion-label position="floating">Prénom</ion-label>
-                            <ion-input
-                                formControlName="firstName"
-                                type="text"
-                                required
-                            ></ion-input>
-                            <div
-                                style="color: red"
-                                *ngIf="
-                                    form.hasError('required', 'firstName') &&
-                                    isSubmitted == true
-                                "
-                            >
-                                Veuillez saisir votre prénom
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <ion-label position="floating">Nom</ion-label>
-                            <ion-input
-                                formControlName="lastName"
-                                type="text"
-                                required
-                            ></ion-input>
-                            <div
-                                style="color: red"
-                                *ngIf="
-                                    form.hasError('required', 'lastName') &&
-                                    isSubmitted == true
-                                "
-                            >
-                                Veuillez saisir votre nom
-                            </div>
-                        </div>
-                    </div>
+        <h2>Create an account</h2>
+            
+        <div class="d-flex">
+            <div class="df-left">
+                <div class="form-group fg-input">
+                    <ion-input
+                        type="file"
+                        required
+                        (change)="fileChangeEvent($event)"
+                    ></ion-input>
                 </div>
-                <div class="form-group">
-                    <ion-button type="submit" color="primary" expand="block">
-                        Créer un compte
-                    </ion-button>
+
+                <div *ngIf="picture" class="form-group fg-img">
+                    <ion-thumbnail slot="start">
+                        <ion-img [src]="picture"></ion-img>
+                    </ion-thumbnail>
                 </div>
             </div>
+
+            <div class="df-right">
+                <div class="form-group">
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input
+                        formControlName="email"
+                        type="email"
+                        required
+                    ></ion-input>
+                
+                    <span class="error ion-padding" style="color: red;" *ngIf="isSubmitted && !emailAvailable">
+                        Email déjà utilisé
+                    </span>
+                    <span class="error ion-padding" style="color: red;" *ngIf="form.hasError('required', 'email') && isSubmitted == true">
+                        Veuillez saisir un email
+                    </span>
+                    <span style="color: red;" *ngIf="form.hasError('email', 'email') && isSubmitted == true">
+                        Veuillez saisir un format d'adresse mail correct</span>
+                </div>
+                <div class="form-group">
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input
+                        formControlName="password"
+                        type="password"
+                        required
+                    ></ion-input>
+                    <span class="error ion-padding" style="color: red;" *ngIf="form.hasError('required', 'password') && isSubmitted == true">
+                        Veuillez saisir un mot de passe
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <ion-label position="floating">Prénom</ion-label>
+                    <ion-input
+                        formControlName="firstName"
+                        type="text"
+                        required
+                    ></ion-input>
+                    <div
+                        style="color: red"
+                        *ngIf="
+                            form.hasError('required', 'firstName') &&
+                            isSubmitted == true
+                        "
+                    >
+                        Veuillez saisir votre prénom
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <ion-label position="floating">Nom</ion-label>
+                    <ion-input
+                        formControlName="lastName"
+                        type="text"
+                        required
+                    ></ion-input>
+                    <div
+                        style="color: red"
+                        *ngIf="
+                            form.hasError('required', 'lastName') &&
+                            isSubmitted == true
+                        "
+                    >
+                        Veuillez saisir votre nom
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <ion-button type="submit" color="primary" expand="block">
+                Créer un compte
+            </ion-button>
         </div>
     </div>
 </form>

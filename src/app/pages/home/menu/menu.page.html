@@ -22,87 +22,73 @@
             </ion-label>
         </div>
 
-        <ion-icon name="notifications-outline"></ion-icon>
-        <ion-icon name="mail-outline"></ion-icon>
+        <div class="icon-container" *ngIf="currentUser">
+            <ion-icon name="notifications-outline"></ion-icon>
+            <ion-icon name="mail-outline"></ion-icon>
+        </div>
 
         <div class="loggin" *ngIf="!currentUser">
+            <div class="title">Login</div>
             <form [formGroup]="form" (ngSubmit)="Login()" novalidate>
-                <div class="signin-container">
-                    <div class="sc-left">
-                        <div>
-                            <div class="form-group">
-                                <ion-label position="floating"
-                                    >Email address</ion-label
-                                >
-                                <ion-input
-                                    formControlName="email"
-                                    type="email"
-                                    required
-                                ></ion-input>
-                                <div
-                                    style="color: red"
-                                    *ngIf="form.hasError('email', 'email') && isSubmitted == true"
-                                >
-                                    Veuillez saisir un format d'adresse mail
-                                    correct
-                                </div>
-                                <div
-                                    style="color: red"
-                                    *ngIf="form.hasError('required', 'email') && isSubmitted == true"
-                                >
-                                    Veuillez saisir une adresse mail
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <ion-label position="floating"
-                                    >Password
-                                    <ion-icon
-                                        name="help-circle-outline"
-                                    ></ion-icon
-                                ></ion-label>
-                                <ion-input
-                                    formControlName="password"
-                                    type="password"
-                                    required
-                                ></ion-input>
-                                <div
-                                    style="color: red"
-                                    *ngIf="form.hasError('required', 'password') && isSubmitted == true"
-                                >
-                                    Veuillez saisir un mot de passe
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <ion-button
-                                    type="submit"
-                                    color="primary"
-                                    expand="block"
-                                    >Connexion</ion-button
-                                >
-                            </div>
-
-							<div class="form-group">
-                                <ion-button
-                                    color="primary"
-                                    expand="block"
-									(click)="OpenRegister()"
-                                    >Register</ion-button
-                                >
-                            </div>
-
-                            <!--<div class="form-group already-account">
-						<p>
-						  Already have an account? <span>Sign in to your Fairwai workspace!</span>
-						</p>
-						<a>
-						  <ion-icon name="arrow-forward-outline"></ion-icon>
-						</a>
-					  </div>-->
-                        </div>
+                <div class="form-group">
+                    <ion-input
+                        formControlName="email"
+                        type="email"
+                        placeholder="Email"
+                        required
+                    ></ion-input>
+                    <div
+                        style="color: red"
+                        *ngIf="form.hasError('email', 'email') && isSubmitted == true"
+                    >
+                        Veuillez saisir un format d'adresse mail
+                        correct
+                    </div>
+                    <div
+                        style="color: red"
+                        *ngIf="form.hasError('required', 'email') && isSubmitted == true"
+                    >
+                        Veuillez saisir une adresse mail
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <ion-input
+                        formControlName="password"
+                        type="password"
+                        placeholder="Password"
+                        required
+                    ></ion-input>
+                    <div
+                        style="color: red"
+                        *ngIf="form.hasError('required', 'password') && isSubmitted == true"
+                    >
+                        Veuillez saisir un mot de passe
+                    </div>
+                </div>
+
+                <ion-button
+                    type="submit"
+                    color="primary"
+                    expand="block"
+                    >Connexion</ion-button
+                >
+                <p>Or</p>
+                <ion-button
+                    color="primary"
+                    expand="block"
+                    (click)="OpenRegister()"
+                    >Register</ion-button
+                >
+
+                <!--<div class="form-group already-account">
+                    <p>
+                        Already have an account? <span>Sign in to your Fairwai workspace!</span>
+                    </p>
+                    <a>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                </div>-->
             </form>
         </div>
     </div>
