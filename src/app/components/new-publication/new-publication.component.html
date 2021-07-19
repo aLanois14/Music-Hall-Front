@@ -1,16 +1,20 @@
-<ion-textarea
-    auto-grow = "true"
-    debounce = "500"
-    (ionChange) = "UpdateDescription($event)"
->
-</ion-textarea>
-
-<ion-input type="file" required multiple (change)="fileChangeEvent($event)"></ion-input>
-
-<div *ngFor="let photo of photos">
-    <img [src]="photo" alt="" />
+<div class="form-group">
+    <ion-textarea
+        auto-grow = "true"
+        debounce = "500"
+        (ionChange) = "UpdateDescription($event)"
+    >
+    </ion-textarea>
 </div>
 
-<ion-content>
-	<ion-button (click)="Publish()">Publish</ion-button>
-</ion-content>
+<div class="form-group">
+    <ion-input type="file" required multiple (change)="fileChangeEvent($event)"></ion-input>
+
+    <div *ngFor="let photo of photos">
+        <img [src]="photo" alt="" />
+    </div>
+</div>
+
+<div class="form-group button">
+	<ion-button (click)="Publish()" color="primary" expand="block">Publish</ion-button>
+</div>
