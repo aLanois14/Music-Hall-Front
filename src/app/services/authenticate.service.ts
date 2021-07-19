@@ -8,7 +8,19 @@ import { HttpService } from './http.service';
     providedIn: 'root',
 })
 export class AuthenticateService {
+    private _currentUser: User = new User()
+    public currentUserEvent: EventEmitter<User> = new EventEmitter<User>();
+
     constructor(private _http: HttpService) {}
+
+    public GetCurrentUser() : User {
+		return this._currentUser
+	}
+
+	public SetCurrentUser(selectedWorkspace: User) : void {
+		this._currentUser = selectedWorkspace
+		this.currentUserEvent.emit(this._currentUser)
+	}
 
     /**Check email availability
      * Params:
@@ -39,6 +51,9 @@ export class AuthenticateService {
                     var currentUser = new User(res);
                     localStorage.setItem('auth_token', currentUser.jwt.auth_token);
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                    this.SetCurrentUser(currentUser);
+
                     resolve(true);
                 },
                 (Error) => {
@@ -82,6 +97,9 @@ export class AuthenticateService {
                     localStorage.setItem('auth_token', currentUser.jwt.auth_token);
                     localStorage.setItem('refresh_token', currentUser.jwt.refresh_token)
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                    this.SetCurrentUser(currentUser);
+                    
                     resolve(currentUser);
                 },
                 (Error) => {

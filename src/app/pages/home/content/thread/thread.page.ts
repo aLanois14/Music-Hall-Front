@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NewPublicationComponent } from '@app/components/new-publication/new-publication.component';
 import { Publication, PublicationFile } from '@app/models/publication.model';
+import { User } from '@app/models/user.model';
+import { AuthenticateService } from '@app/services/authenticate.service';
 import { PublicationService } from '@app/services/publication.service';
 import { ModalController } from '@ionic/angular';
 
@@ -13,11 +15,14 @@ import { ModalController } from '@ionic/angular';
 export class ThreadPage implements OnInit {
     public publications = new Array<Publication>();
     public publicationsEvent: any = null;
+    public currentUser: User
+    public currentUserEvent: any = null
 
     constructor(
         private _modal: ModalController,
         private _publication: PublicationService,
-        private _sanitizer: DomSanitizer
+        private _sanitizer: DomSanitizer,
+        private _auth: AuthenticateService
     ) {}
 
     ngOnInit() {
@@ -43,6 +48,18 @@ export class ThreadPage implements OnInit {
             this._publication.GetPublicationsList().then((data) => {
                 
             });
+        }
+
+        if(!this.currentUserEvent){
+            this.currentUserEvent = 
+                this._auth.currentUserEvent.subscribe((data) => {
+                    this.currentUser = data
+                })
+        }
+
+        this.currentUser = this._auth.GetCurrentUser()
+        if(!this.currentUser){
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         }
     }
 
