@@ -90,4 +90,10 @@ export class MenuPage implements OnInit {
         });
         return await pop.present();
     }
+
+    public Disconnect(){
+        localStorage.clear()
+        this.currentUser = null
+        this._auth.SetCurrentUser(null)
+    }
 }

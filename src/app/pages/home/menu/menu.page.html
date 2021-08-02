@@ -93,8 +93,10 @@
         </div>
 
         <ion-button
+            *ngIf="currentUser && currentUser.id"
             expand="block"
-            class="btn-logout">
+            class="btn-logout"
+            (click)="Disconnect()">
             Déconnexion
         </ion-button>
     </div>

@@ -1,7 +1,7 @@
 <div class="main-header">
   <h1>Music-Hall</h1>
   <ion-button
-      *ngIf="currentUser"
+      *ngIf="currentUser && currentUser.id"
       slot = "end"
       color="primary"
       (click) = "NewPublication()">

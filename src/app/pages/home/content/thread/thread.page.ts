@@ -57,10 +57,7 @@ export class ThreadPage implements OnInit {
                 })
         }
 
-        this.currentUser = this._auth.GetCurrentUser()
-        if(!this.currentUser){
-            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        }
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     /* Create new item from header button */

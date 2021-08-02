@@ -8,7 +8,7 @@
 </div>
 
 <div class="form-group">
-    <ion-input type="file" required multiple (change)="fileChangeEvent($event)"></ion-input>
+    <ion-input type="file" required multiple (change)="fileChangeEvent($event)" accept="image/png, image/jpeg, image/gif, audio/mp3"></ion-input>
 
     <div *ngFor="let photo of photos">
         <img [src]="photo" alt="" />
