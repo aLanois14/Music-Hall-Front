@@ -388,6 +388,13 @@ ion-modal.create-new-modal .modal-wrapper .ion-page .form-group.button ion-butto
   display: inline-block;
   width: auto;
 }
+ion-modal.create-new-modal .modal-wrapper .ion-page .form-group .photo {
+  text-align: center;
+  padding-top: 40px;
+}
+ion-modal.create-new-modal .modal-wrapper .ion-page .form-group .photo img {
+  max-height: 300px;
+}
 ion-modal ion-backdrop {
   background: #1D1141;
 }
