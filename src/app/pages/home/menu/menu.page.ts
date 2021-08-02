@@ -23,6 +23,7 @@ export function removeSpaces(control: FormControl) {
 export class MenuPage implements OnInit {
 	
 	public currentUser: User
+    public currentUserEvent: any = null
     public form: FormGroup
     public isSubmitted: boolean = false
     public userLogin: Login = new Login()
@@ -46,6 +47,13 @@ export class MenuPage implements OnInit {
             ],
             password: ['', Validators.required],
         })
+
+        if(!this.currentUserEvent){
+            this.currentUserEvent = 
+                this._auth.currentUserEvent.subscribe((data) => {
+                    this.currentUser = data
+                })
+        }
 
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }

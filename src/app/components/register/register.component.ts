@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { User } from '@app/models/user.model';
 import { AuthenticateService } from '@app/services/authenticate.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
     selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
     constructor(
         private _formBuilder: FormBuilder,
         private _auth: AuthenticateService,
-		private _router: Router
+		private _router: Router,
+        private _modal: ModalController
     ) {}
 
     ngOnInit() {
@@ -54,8 +56,6 @@ export class RegisterComponent implements OnInit {
 
 	public Register(){        
         this.isSubmitted = true
-		console.log(this.form.valid)
-		console.log(this.form)
         if (!this.form.valid) {
             return false
         } 
@@ -83,6 +83,7 @@ export class RegisterComponent implements OnInit {
 						this._auth.Register(formData)
 							.then(
 								data => {
+                                    this._modal.dismiss()
 									this._router.navigate(['']);
 								}
 							)
